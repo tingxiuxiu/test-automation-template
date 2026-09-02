@@ -8,7 +8,8 @@
     "dev": "vite",
     "build": "tsc -p tsconfig.json && vite build",
     "preview": "vite preview",
-    "data": "python3 tools/make_sample_data.py"
+    "data": "python3 tools/make_sample_data.py",
+    "report": "allure generate allure-results -o allure-report --clean && python3 tools/enhance_allure_report.py allure-report"
   },
   "dependencies": {
     "react": "^18.3.1",

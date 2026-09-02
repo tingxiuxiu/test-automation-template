@@ -3,8 +3,8 @@ to the Allure report in the fixture teardown phase.
 
 Run:
     python -m pytest tests/ --alluredir=allure-results
-    npx allure generate allure-results -o allure-report --clean
-    npx allure open allure-report        # or: python -m http.server -d allure-report 8000
+    npm run report        # allure generate + embed waveform viewers into case pages
+    python -m http.server -d allure-report 4174   # then open http://localhost:4174/
 """
 import math
 

@@ -1,47 +1,3 @@
-<!DOCTYPE html>
-<html dir="ltr" lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta name="allure-report-uuid" content="52844438-84c1-485e-bf74-b7d20cd7da9f">
-    <title>Allure Report</title>
-    <link rel="icon" href="assets/favicon-BDLHVmV7.ico">
-    <!-- allure-core-head:start -->
-    <!-- allure-core-head:end -->
-</head>
-<body>
-    <div id="alert"></div>
-    <div id="content">
-        <span class="spinner">
-            <span class="spinner__circle"></span>
-        </span>
-    </div>
-    <div id="popup"></div>
-    <!-- allure-core-body:start -->
-    <script>
-        window.__allureCoreLoaded = new Promise(function (resolve, reject) {
-        window.__allureResolveCoreLoaded = resolve;
-        window.__allureRejectCoreLoaded = reject;
-    });
-    </script>
-    <script src="assets/index-BraRl9ss.js"></script>
-    <script>
-        if (typeof window.__allureResolveCoreLoaded === "function") {
-            window.__allureResolveCoreLoaded([]);
-        }
-    </script>
-    <!-- allure-core-body:end -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-FVWC4GKEYS"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-        gtag('config', 'G-FVWC4GKEYS', {
-          'allureVersion': '2.43.0',
-          'reportUuid': '52844438-84c1-485e-bf74-b7d20cd7da9f',
-          'single_file': false
-        });
-    </script>
-<script data-waveform-embed defer>
 /**
  * Allure report enhancement: embed waveform viewer attachments directly into
  * the test case detail page.
@@ -249,7 +205,3 @@
     schedule();
   }
 })();
-
-</script>
-</body>
-</html>
