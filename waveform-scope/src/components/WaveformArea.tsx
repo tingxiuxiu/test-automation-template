@@ -17,7 +17,6 @@ import type {
 interface WaveformAreaProps {
   dataset: WaveformDataset;
   visibleKeys: SignalKey[];
-  merge: boolean;
   viewport: Viewport;
   cursors: CursorPair;
   brush: Brush | null;
@@ -37,7 +36,7 @@ interface WaveformAreaProps {
  * measurement table.
  */
 export function WaveformArea(props: WaveformAreaProps) {
-  const { dataset, visibleKeys, merge, viewport, cursors, brush, hoverIdx, measureWindow } = props;
+  const { dataset, visibleKeys, viewport, cursors, brush, hoverIdx, measureWindow } = props;
   const fs = dataset.samplingRate;
 
   const toTrace = (key: SignalKey): Trace => {
@@ -57,17 +56,18 @@ export function WaveformArea(props: WaveformAreaProps) {
     );
     if (keys.length === 0) return null;
 
-    const lanes: { traces: Trace[]; sharedScale: boolean; height: number }[] = merge
-      ? [
-          {
-            traces: keys.map(toTrace),
-            // same unit (e.g. the three voltage phases) → shared Y scale,
-            // mixed units (rpm vs N·m) → per-trace auto-normalization
-            sharedScale: new Set(keys.map((k) => SIGNALS[k].unit)).size === 1,
-            height: 220,
-          },
-        ]
-      : keys.map((k) => ({ traces: [toTrace(k)], sharedScale: true, height: 150 }));
+    // Fixed layout: ONE lane per channel group, all visible signals of the
+    // group overlaid in that lane. "Merge" only forces every switch on —
+    // the three-group layout never changes.
+    // Same unit (e.g. the three voltage phases) → shared Y scale;
+    // mixed units (rpm vs N·m) → per-trace auto-normalization.
+    const lanes: { traces: Trace[]; sharedScale: boolean; height: number }[] = [
+      {
+        traces: keys.map(toTrace),
+        sharedScale: new Set(keys.map((k) => SIGNALS[k].unit)).size === 1,
+        height: keys.length > 1 ? 230 : 200,
+      },
+    ];
 
     return (
       <section className="signal-group" key={group}>

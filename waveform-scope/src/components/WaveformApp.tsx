@@ -107,7 +107,6 @@ export function WaveformApp({ dataset }: WaveformAppProps) {
         <WaveformArea
           dataset={dataset}
           visibleKeys={visibleKeys}
-          merge={merge}
           viewport={viewport}
           cursors={cursors}
           brush={brush}

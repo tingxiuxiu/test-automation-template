@@ -96,8 +96,8 @@ export function ControlPanel({
         </div>
         <p className="panel-note">
           {merge
-            ? 'All signals on · overlaid per channel group'
-            : 'Separate lane per signal · linked toggles'}
+            ? '合成显示:所有开关强制开启,三相电压/三相电流/电机信号分别在各自通道区域内同时显示'
+            : '各信号在其通道区域内叠加显示;开关控制对应信号是否可见'}
         </p>
       </section>
 
