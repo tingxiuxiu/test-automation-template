@@ -1,0 +1,5 @@
+node_modules/
+dist/
+allure-results/
+__pycache__/
+*.pyc
