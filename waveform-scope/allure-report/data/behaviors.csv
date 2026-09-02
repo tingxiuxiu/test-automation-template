@@ -1,0 +1,4 @@
+"BROKEN","EPIC","FAILED","FEATURE","PASSED","SKIPPED","STORY","UNKNOWN"
+"0","Motor Drive","0","Protection","1","0","Overcurrent trip","0"
+"0","Motor Drive","0","Startup","1","0","Nominal load","0"
+"0","Motor Drive","0","Speed control","1","0","Step response","0"
