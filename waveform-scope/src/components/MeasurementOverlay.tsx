@@ -6,14 +6,13 @@ interface MeasurementOverlayProps {
   cursors: CursorPair;
   brush: Brush | null;
   window: MeasureWindow;
-  hoverIdx: number | null;
 }
 
 /**
  * Floating readout above the measurement table: A/B cursor times, the active
- * window (box selection or cursor span) with Δt and 1/Δt, plus hover time.
+ * window (box selection or cursor span) with Δt and 1/Δt.
  */
-export function MeasurementOverlay({ fs, cursors, brush, window, hoverIdx }: MeasurementOverlayProps) {
+export function MeasurementOverlay({ fs, cursors, brush, window }: MeasurementOverlayProps) {
   const t = (idx: number) => formatDuration(idx / fs);
   const dt = (window.i1 - window.i0) / fs;
   const source = brush ? 'Box selection' : 'A/B cursors';
@@ -32,11 +31,6 @@ export function MeasurementOverlay({ fs, cursors, brush, window, hoverIdx }: Mea
       <span>
         1/Δt <b>{formatFreq(dt > 0 ? 1 / dt : Number.NaN)}</b>
       </span>
-      {hoverIdx != null && (
-        <span className="hover-readout">
-          hover <b>{t(hoverIdx)}</b>
-        </span>
-      )}
     </div>
   );
 }

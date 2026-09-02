@@ -9,16 +9,19 @@ interface TimeAxisProps {
   cursors: CursorPair;
   brush: Brush | null;
   onPan: (deltaSamples: number) => void;
+  /** Grid margins matching the lanes so ticks and markers align. */
+  padLeft?: number;
+  padRight?: number;
 }
 
-const PAD = { left: 10, right: 10 };
 const HEIGHT = 30;
 
 /** Shared time axis under all lanes; dragging it pans every synchronized lane. */
-export function TimeAxis({ viewport, fs, cursors, brush, onPan }: TimeAxisProps) {
+export function TimeAxis({ viewport, fs, cursors, brush, onPan, padLeft = 10, padRight = 10 }: TimeAxisProps) {
   const canvasRef = useRef<HTMLCanvasElement | null>(null);
   const dragRef = useRef<{ lastX: number } | null>(null);
   const [wrapRef, width] = useElementWidth<HTMLDivElement>();
+  const PAD = { left: padLeft, right: padRight };
 
   const plotW = Math.max(10, width - PAD.left - PAD.right);
   const span = Math.max(1, viewport.end - viewport.start);

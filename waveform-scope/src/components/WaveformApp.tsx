@@ -18,8 +18,8 @@ interface WaveformAppProps {
 
 /**
  * Orchestrator: owns every piece of shared scope state (toggles, merge mode,
- * viewport, A/B cursors, box selection, hover) so all waveform groups stay
- * perfectly synchronized.
+ * viewport, A/B cursors, box selection) so all waveform groups stay perfectly
+ * synchronized.
  */
 export function WaveformApp({ dataset }: WaveformAppProps) {
   const total = useMemo(() => {
@@ -36,7 +36,6 @@ export function WaveformApp({ dataset }: WaveformAppProps) {
     b: Math.round(total * 0.75),
   });
   const [brush, setBrush] = useState<Brush | null>(null);
-  const [hoverIdx, setHoverIdx] = useState<number | null>(null);
 
   const visibleKeys = useMemo<SignalKey[]>(() => {
     if (merge) return ALL_SIGNAL_KEYS.filter((k) => Boolean(dataset.signals[k]));
@@ -110,13 +109,11 @@ export function WaveformApp({ dataset }: WaveformAppProps) {
           viewport={viewport}
           cursors={cursors}
           brush={brush}
-          hoverIdx={hoverIdx}
           measureWindow={measureWindow}
           onZoomAt={onZoomAt}
           onPan={onPan}
           onCursorMove={onCursorMove}
           onBrush={setBrush}
-          onHover={setHoverIdx}
           onFit={onFit}
         />
         <ControlPanel

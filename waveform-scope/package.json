@@ -12,6 +12,7 @@
     "report": "allure generate allure-results -o allure-report --clean && python3 tools/enhance_allure_report.py allure-report"
   },
   "dependencies": {
+    "echarts": "^6.1.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1"
   },
