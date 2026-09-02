@@ -47,6 +47,12 @@ interface YRange {
   max: number;
 }
 
+/** Expand a range by ~10% headroom so peaks/troughs never touch the lane edges. */
+function padRange(r: YRange): YRange {
+  const m = (r.max - r.min) * 0.1 || Math.max(Math.abs(r.max), Math.abs(r.min)) * 0.05 || 1;
+  return { min: r.min - m, max: r.max + m };
+}
+
 /**
  * The oscilloscope lane: canvas-rendered traces with zoom/pan, draggable A/B
  * cursors and a box-selection (brush) region. All interactions are index-based
@@ -154,7 +160,7 @@ export function SignalLane(props: SignalLaneProps) {
       const trace = traces[ti];
       const i1 = Math.min(trace.data.length, Math.ceil(viewport.end));
       if (i1 <= i0) continue;
-      const range = sharedScale ? ranges.overall : ranges.per[ti];
+      const range = padRange(sharedScale ? ranges.overall : ranges.per[ti]);
       const yOf = (v: number) => PAD.top + (1 - (v - range.min) / (range.max - range.min)) * plotH;
 
       ctx.strokeStyle = trace.color;

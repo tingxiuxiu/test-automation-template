@@ -1,5 +1,5 @@
 "DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
 "Locked-rotor style fault: current ramps beyond the 20 A trip threshold
 and the phase voltages are cut ~120 ms into the capture.","30","test_overcurrent_protection_trips","tests","2026-09-02","passed","2026-09-02","","test_motor_demo","",""
-"Speed reference steps 1500 → 3000 rpm at 100 ms; check settling.","31","test_speed_step_response","tests","2026-09-02","passed","2026-09-02","","test_motor_demo","",""
-"Startup under nominal load: balanced 311 V / 8 A phases, ramp to 2850 rpm.","28","test_startup_nominal_load","tests","2026-09-02","passed","2026-09-02","","test_motor_demo","",""
+"Startup under nominal load: balanced 311 V / 8 A phases, ramp to 2850 rpm.","29","test_startup_nominal_load","tests","2026-09-02","passed","2026-09-02","","test_motor_demo","",""
+"Speed reference steps 1500 → 3000 rpm at 100 ms; check settling.","30","test_speed_step_response","tests","2026-09-02","passed","2026-09-02","","test_motor_demo","",""
